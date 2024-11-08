@@ -22,7 +22,7 @@ import styles from "./ChatCard.module.css";
  * @param {Number} rating
  * @returns 
  */
-const ChatCard = ({ isAI, msg, time, isOldChat=false }) => {
+const ChatCard = ({ isAI, msg, time, isOldChat = false }) => {
     // for feedback modal
     const [open, setOpen] = useState(false);
 
@@ -31,7 +31,7 @@ const ChatCard = ({ isAI, msg, time, isOldChat=false }) => {
     // to open ratings
     const [isLike, setIsLike] = useState(false);
 
-    
+
     return (
         <Stack
             direction="row"
@@ -50,7 +50,7 @@ const ChatCard = ({ isAI, msg, time, isOldChat=false }) => {
                 }
             }}
         >
-            <Box 
+            <Box
                 src={isAI ? AI_icon : user_icon}
                 component="img"
                 height="68px"
@@ -66,23 +66,23 @@ const ChatCard = ({ isAI, msg, time, isOldChat=false }) => {
                 </Typography>
                 <Stack direction="row" spacing={2}>
                     <Typography variant="h5">
-                       {time}
+                        {time}
                     </Typography>
 
                     {/* if AI then show like and dislike buttons */}
                     {
                         (isAI) &&
-                        <Stack 
-                            direction="row" 
-                            spacing={2} 
+                        <Stack
+                            direction="row"
+                            spacing={2}
                             visibility='hidden'
                             sx={{ opacity: { xs: 1, md: 0 }, transition: 'opacity 400ms ease' }}
                             className='feedback-btns'
                         >
-                            <Box 
-                                src={like_icon} 
-                                component="img" 
-                                sx={{cursor: "pointer"}}
+                            <Box
+                                src={like_icon}
+                                component="img"
+                                sx={{ cursor: "pointer" }}
                                 onClick={() => setIsLike(prev => !prev)}
                             />
                             {
@@ -95,10 +95,10 @@ const ChatCard = ({ isAI, msg, time, isOldChat=false }) => {
                                     }}
                                 />
                             }
-                            <Box 
-                                src={dislike_icon} 
-                                component="img" 
-                                sx={{cursor: "pointer"}}
+                            <Box
+                                src={dislike_icon}
+                                component="img"
+                                sx={{ cursor: "pointer" }}
                                 onClick={() => setOpen(true)}
                             />
                             <FeedBackModal open={open} setOpen={setOpen} />
@@ -115,7 +115,7 @@ const ChatCard = ({ isAI, msg, time, isOldChat=false }) => {
                 {
                     (isOldChat && isAI) &&
                     <Typography variant="h4">
-                        Feedback: <span style={{fontWeight: "400"}}>{'feedback'}</span>
+                        Feedback: <span style={{ fontWeight: "400" }}>{'feedback'}</span>
                     </Typography>
                 }
             </Stack>
